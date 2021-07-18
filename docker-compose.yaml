@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  web:
+    container_name: weather-app
+    hostname: weather-app
+    build:
+      context: .  # The Dockerfile is in the current directory
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/srv/weather-app
+      - /srv/weather-app/node_modules  # Ensure `/app/node_modules` is always empty in the container  exclude:
+    command: yarn dev --host
